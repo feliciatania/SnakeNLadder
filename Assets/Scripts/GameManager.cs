@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+
 public class GameManager : MonoBehaviour
 {
     public List<QuestionAndAnswers> QnA = new List<QuestionAndAnswers>();
@@ -87,35 +88,35 @@ public class GameManager : MonoBehaviour
         go_kartuNeg.SetActive(false);
         go_win.SetActive(false);
         go_lose.SetActive(false);
-       
 
-        QnA.Add(new QuestionAndAnswers() 
-        { 
-            Question = "Sifat-sifat yang dimiliki oleh seorang technopreneur, kecuali … ", 
-            Answers = new string[3] { "logic", "smart", "creativity" }, 
+
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Sifat-sifat yang dimiliki oleh seorang technopreneur, kecuali ? ",
+            Answers = new string[3] { "logic", "smart", "creativity" },
             CorrectAnswers = 2
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Seorang yang berpikir “Outside the box” adalah …  ",
+            Question = "Seorang yang berpikir ?Outside the box? adalah ?  ",
             Answers = new string[3] { "Entrepreneur", "Sociopreneur", "Technopreneur" },
             CorrectAnswers = 3
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Sebuah badan usaha yang memberikan pendanaan pada sebuah start-up adalah …",
+            Question = "Sebuah badan usaha yang memberikan pendanaan pada sebuah start-up adalah ?",
             Answers = new string[3] { "Angel Investor", "Bootstrap", "Venture Capital" },
             CorrectAnswers = 3
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Langkah “Select the target market” termasuk dalam ?",
+            Question = "Langkah ?Select the target market? termasuk dalam ?",
             Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
             CorrectAnswers = 2
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Design Thinking merupakan kombinasi dari …",
+            Question = "Design Thinking merupakan kombinasi dari ?",
             Answers = new string[3] { "Analytical Thinking & Intuitive Thinking", "Analytical Thinking & Creative Thinking", "Creative Thinking & Intuitive Thinking" },
             CorrectAnswers = 1
         });
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour
         {
             playgame();
         });
-        
+
     }
 
     void playgame()
@@ -202,7 +203,7 @@ public class GameManager : MonoBehaviour
                 generateQuestion();
                 answered = false;
                 StartTimer();
-                
+
             });
 
         });
@@ -259,7 +260,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void TimeOut()
-    { 
+    {
         startTimer = false;
         if (isTimeout)
         {
@@ -282,7 +283,7 @@ public class GameManager : MonoBehaviour
 
     void lemparDadu()
     {
-        if(islemparDaduOnce == false)
+        if (islemparDaduOnce == false)
         {
             islemparDaduOnce = true;
             //angkaDadu = UnityEngine.Random.Range(1, 4);
@@ -298,7 +299,7 @@ public class GameManager : MonoBehaviour
                 islemparDaduOnce = false;
                 //go_angkaDadu.SetActive(false);
                 StartCoroutine(MoveMahasiswa(angkaDadu));
-                
+
             });
         }
     }
@@ -413,7 +414,7 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(MoveDosen());
                 });
             });
-           
+
         }
         this.Wait(1f, () =>
         {
@@ -425,15 +426,15 @@ public class GameManager : MonoBehaviour
             {
                 go_kartuNeg.SetActive(true);
             }
-        });       
-        
+        });
+
     }
 
     IEnumerator MoveDosen()
     {
         curPosDos++;
         float x = go_dosen.transform.localPosition.x;
-        float y = go_dosen.transform.localPosition.y;     
+        float y = go_dosen.transform.localPosition.y;
         Vector2 StartPosDosen = new Vector2(x, y);
         Vector2 EndPosDosen;
         float time = 0;
@@ -457,9 +458,9 @@ public class GameManager : MonoBehaviour
         //}
 
         // CODE BARU PAKAI CHILD
-        kotak[curPosDos - 1].transform.SetParent(kotak[curPosDos].transform, true);
-        StartPosDosen = kotak[curPosDos - 1].transform.localPosition;
-        go_dosen.transform.SetParent(kotak[curPosDos].transform, false);
+        //kotak[curPosDos - 1].transform.SetParent(kotak[curPosDos].transform, true);
+        //go_dosen.transform.SetParent(kotak[curPosDos].transform, false);
+        StartPosDosen = go_dosen.transform.position;
         if (curPosDos == 4)
         {
             go_dosen.transform.localRotation = Quaternion.Euler(0, 180f, 0);
@@ -468,28 +469,30 @@ public class GameManager : MonoBehaviour
         {
             go_dosen.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        
-        StartPosDosen = kotak[curPosDos - 1].transform.localPosition;
+
+        StartPosDosen = go_dosen.transform.position;
         //kotak[curPosDos - 1].transform.SetAsFirstSibling();
         while (time < duration)
         {
             if (curPosDos >= 4 && curPosDos <= 7)
-                x = 55;
+                x = 30;
             else
-                x = -55;
-            y = 30;
-            EndPosDosen = new Vector2(x, y);
-            go_dosen.transform.localPosition = Vector2.Lerp(StartPosDosen, EndPosDosen, time / duration);
+                x = -30;
+            x *= Screen.width / 1024f;
+            y = 15;
+            EndPosDosen = new Vector2(kotak[curPosDos].transform.position.x + x, kotak[curPosDos].transform.position.y + y); //ditambah dengan posisi tile target
+            go_dosen.transform.position = Vector2.Lerp(StartPosDosen, EndPosDosen, time / duration); //diganti jadi world position karena masalah sort rendering
             time += Time.deltaTime;
             yield return null;
         }
-        if(curPosDos == curPosMhs)
+        if (curPosDos == curPosMhs)
             DosenImg.sprite = DosenSprites[1];
         else
             DosenImg.sprite = DosenSprites[0];
 
-        kotak[curPosDos - 1].transform.SetParent(go_panelPapan.transform);
-        kotak[curPosDos - 1].transform.SetSiblingIndex(11 - curPosDos);
+        //koreksi
+        //kotak[curPosDos - 1].transform.SetParent(go_panelPapan.transform);
+        //kotak[curPosDos - 1].transform.SetSiblingIndex(11 - curPosDos);
         if (curPosDos == 11)
         {
             go_papan.SetActive(false);
@@ -499,7 +502,7 @@ public class GameManager : MonoBehaviour
         {
             playgame();
         }
-        
+
     }
 
     IEnumerator MoveMahasiswa(int n)
@@ -536,10 +539,11 @@ public class GameManager : MonoBehaviour
             //    yield return null;
             //}
 
-
-            kotak[curPosMhs - 1].transform.SetParent(kotak[curPosMhs].transform, true);
-            StartPosMhs = kotak[curPosMhs - 1].transform.localPosition;
-            go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+            //koreksi
+            //kotak[curPosMhs - 1].transform.SetParent(kotak[curPosMhs].transform, true);
+            //go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+            //go_mhs.transform.parent = kotak[curPosMhs].transform;
+            StartPosMhs = go_mhs.transform.position; //diganti jadi position karena masalah sort rendering
             if (curPosMhs >= 4 && curPosMhs <= 7)
             {
                 go_mhs.transform.localRotation = Quaternion.Euler(0, 180f, 0);
@@ -551,18 +555,20 @@ public class GameManager : MonoBehaviour
             while (time < duration)
             {
                 if (curPosMhs >= 4 && curPosMhs <= 7)
-                    x = -60;
+                    x = -30;
                 else
-                    x = 60;
-                y = 15;
-                EndPosMhs = new Vector2(x, y);
-                go_mhs.transform.localPosition = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration);
+                    x = 30;
+                x *= Screen.width / 1024f;
+                y = 5;
+                EndPosMhs = new Vector2(kotak[curPosMhs].transform.position.x + x, kotak[curPosMhs].transform.position.y + y); // ditambahin posisi di tile target
+                go_mhs.transform.position = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration); //diganti jadi position karena masalah sort rendering
                 time += Time.deltaTime;
                 yield return null;
             }
 
-            kotak[curPosMhs - 1].transform.SetParent(go_panelPapan.transform);
-            kotak[curPosMhs - 1].transform.SetSiblingIndex(11 - curPosMhs);
+            //koreksi
+            //kotak[curPosMhs - 1].transform.SetParent(go_panelPapan.transform);
+            //kotak[curPosMhs - 1].transform.SetSiblingIndex(11 - curPosMhs);
 
             if (curPosDos == curPosMhs)
                 DosenImg.sprite = DosenSprites[1];
@@ -583,7 +589,7 @@ public class GameManager : MonoBehaviour
         {
             checkPositifOrNegatif();
         }
-            
+
     }
 
     IEnumerator MoveMahasiswa2()
@@ -595,7 +601,7 @@ public class GameManager : MonoBehaviour
             for (int i = 1; i <= n; i++)
             {
                 curPosMhs++;
-               
+
                 Vector2 StartPosMhs = go_mhs.transform.position;
                 float x = kotak[curPosMhs].transform.position.x + 30;
                 float y = kotak[curPosMhs].transform.position.y + 10;
@@ -614,10 +620,11 @@ public class GameManager : MonoBehaviour
                 //    yield return null;
                 //}
 
-                kotak[curPosMhs - 1].transform.SetParent(kotak[curPosMhs].transform, true);
-                StartPosMhs = kotak[curPosMhs - 1].transform.localPosition;
-                go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
-                go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+                //koreksi
+                //kotak[curPosMhs - 1].transform.SetParent(kotak[curPosMhs].transform, true);
+                //go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+                //go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+                StartPosMhs = go_mhs.transform.position; //ganti pakai position aja karena masalah sort rendering
                 if (curPosMhs >= 4 && curPosMhs <= 7)
                 {
                     go_mhs.transform.localRotation = Quaternion.Euler(0, 180f, 0);
@@ -629,18 +636,20 @@ public class GameManager : MonoBehaviour
                 while (time < duration)
                 {
                     if (curPosMhs >= 4 && curPosMhs <= 7)
-                        x = -60;
+                        x = -30;
                     else
-                        x = 60; ;
-                    y = 15;
-                    EndPosMhs = new Vector2(x, y);
-                    go_mhs.transform.localPosition = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration);
+                        x = 30; ;
+                    x *= Screen.width / 1024f;
+                    y = 5;
+                    EndPosMhs = new Vector2(kotak[curPosMhs].transform.position.x + x, kotak[curPosMhs].transform.position.y + y);
+                    go_mhs.transform.position = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration); //ganti pakai position aja karena masalah sort rendering
                     time += Time.deltaTime;
                     yield return null;
                 }
 
-                kotak[curPosMhs - 1].transform.SetParent(go_panelPapan.transform);
-                kotak[curPosMhs - 1].transform.SetSiblingIndex(11 - curPosMhs);
+                //koreksi
+                //kotak[curPosMhs - 1].transform.SetParent(go_panelPapan.transform);
+                //kotak[curPosMhs - 1].transform.SetSiblingIndex(11 - curPosMhs);
 
                 if (curPosDos == curPosMhs)
                     DosenImg.sprite = DosenSprites[1];
@@ -653,7 +662,7 @@ public class GameManager : MonoBehaviour
             for (int i = n; i < 0; i++)
             {
                 curPosMhs--;
-                
+
                 Vector2 StartPosMhs = go_mhs.transform.position;
                 float x = kotak[curPosMhs].transform.position.x + 30;
                 float y = kotak[curPosMhs].transform.position.y + 10;
@@ -678,9 +687,10 @@ public class GameManager : MonoBehaviour
                 //    yield return null;
                 //}
 
-                kotak[curPosMhs + 1].transform.SetParent(kotak[curPosMhs].transform, true);
-                StartPosMhs = kotak[curPosMhs + 1].transform.localPosition;
-                go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+                //koreksi
+                //kotak[curPosMhs + 1].transform.SetParent(kotak[curPosMhs].transform, true);
+                //go_mhs.transform.SetParent(kotak[curPosMhs].transform, false);
+                StartPosMhs = go_mhs.transform.position;
                 if (curPosMhs >= 4 && curPosMhs <= 7)
                 {
                     go_mhs.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -692,17 +702,19 @@ public class GameManager : MonoBehaviour
                 while (time < duration)
                 {
                     if (curPosMhs >= 4 && curPosMhs <= 7)
-                        x = -60;
+                        x = -30;
                     else
-                        x = 60;
-                    y = 15;
-                    EndPosMhs = new Vector2(x, y);
-                    go_mhs.transform.localPosition = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration);
+                        x = 30;
+                    y = 5;
+                    EndPosMhs = new Vector2(kotak[curPosMhs].transform.position.x + x, kotak[curPosMhs].transform.position.y + y); //ditambah posisi tile target
+                    go_mhs.transform.position = Vector2.Lerp(StartPosMhs, EndPosMhs, time / duration); //ganti jadi position karena masalah sort rendering
                     time += Time.deltaTime;
                     yield return null;
                 }
-                kotak[curPosMhs + 1].transform.SetParent(go_panelPapan.transform);
-                kotak[curPosMhs + 1].transform.SetSiblingIndex(11 - curPosMhs);
+
+                //koreksi
+                //kotak[curPosMhs + 1].transform.SetParent(go_panelPapan.transform);
+                //kotak[curPosMhs + 1].transform.SetSiblingIndex(11 - curPosMhs);
 
                 if (curPosDos == curPosMhs)
                     DosenImg.sprite = DosenSprites[1];
@@ -728,7 +740,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(MoveDosen());
             });
         });
-        
+
     }
 
     public void onButtonOk()
@@ -744,8 +756,8 @@ public class GameManager : MonoBehaviour
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answers[i];
-            
-            if(QnA[currentQuestion].CorrectAnswers == i+1)
+
+            if (QnA[currentQuestion].CorrectAnswers == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
