@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  GM: {fileID: 1824136866}
+  GM: {fileID: 0}
 --- !u!114 &217210718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,7 +3298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &670594049
 MonoBehaviour:
@@ -3912,7 +3912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  GM: {fileID: 1824136866}
+  GM: {fileID: 0}
 --- !u!114 &769310370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8488,7 +8488,7 @@ RectTransform:
   - {fileID: 1389261945}
   - {fileID: 1757264130}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9222,132 +9222,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820088757}
   m_CullTransparentMesh: 1
---- !u!1 &1824136863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1824136865}
-  - component: {fileID: 1824136866}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1824136865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824136863}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824136866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824136863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9133e0c4314214479a9ef171f88e3d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QnA:
-  - Question: 
-    Answers: []
-    CorrectAnswers: 0
-  options:
-  - {fileID: 769310364}
-  - {fileID: 217210712}
-  - {fileID: 2091905935}
-  currentQuestion: 0
-  QuestionTxt: {fileID: 1396467007}
-  go_HowtoPlay: {fileID: 1757264129}
-  go_versus: {fileID: 1389261944}
-  go_gilMahasiswa: {fileID: 966197919}
-  go_gilDosen: {fileID: 1330156644}
-  go_question: {fileID: 1488478693}
-  go_jwbBenar: {fileID: 1773156727}
-  go_jwbSalah: {fileID: 734173584}
-  go_waktuHabis: {fileID: 2135498306}
-  go_papan: {fileID: 1153695107}
-  go_kartuPos: {fileID: 1091439393}
-  go_kartuNeg: {fileID: 508960501}
-  go_win: {fileID: 1838893854}
-  go_lose: {fileID: 293120537}
-  go_panelPapan: {fileID: 1987382177}
-  btn_lemparDadu: {fileID: 101390088}
-  AngkaDaduTxt: {fileID: 1443442848}
-  go_angkaDadu: {fileID: 1443442846}
-  islemparDaduOnce: 0
-  angkaDadu: 0
-  TimerTxt: {fileID: 414742749}
-  kotak:
-  - {fileID: 2035144479}
-  - {fileID: 120594553}
-  - {fileID: 1820088757}
-  - {fileID: 78017657}
-  - {fileID: 1209073881}
-  - {fileID: 1950090495}
-  - {fileID: 1303382826}
-  - {fileID: 1077647264}
-  - {fileID: 206273073}
-  - {fileID: 1362814817}
-  - {fileID: 2043025651}
-  - {fileID: 918003871}
-  isCorrect: 0
-  curPosMhs: 0
-  curPosDos: 0
-  go_mhs: {fileID: 989396932}
-  go_dosen: {fileID: 391698952}
-  kartuPositif:
-  - 
-  - 
-  - 
-  kartuNegatif:
-  - 
-  - 
-  - 
-  - 
-  kartuPositifPerintah:
-  - 
-  - 
-  - 
-  kartuNegatifPerintah:
-  - 
-  - 
-  - 
-  - 
-  kalPosTxt: {fileID: 2112856303}
-  kalPerintahPosTxt: {fileID: 1738629830}
-  kalNegTxt: {fileID: 734409305}
-  kalPerintahNegTxt: {fileID: 192724465}
-  DiceImg: {fileID: 1378284714}
-  diceSidesSprites:
-  - {fileID: 21300000, guid: 43b4a92e363fb2e41b778c42a7808a91, type: 3}
-  - {fileID: 21300000, guid: b150d6405554b424d947a7eaa97b6b94, type: 3}
-  - {fileID: 21300000, guid: d0810dfcf6327b34b8e55d66fcd3e875, type: 3}
-  DosenImg: {fileID: 391698954}
-  DosenSprites:
-  - {fileID: 21300000, guid: 298e271a4460e1e4a91ac61490f102be, type: 3}
-  - {fileID: 21300000, guid: 080a053e388995e4e8753e1b3acd170f, type: 3}
-  MahasiswaImg: {fileID: 989396934}
-  MahasiswaSprites:
-  - {fileID: 21300000, guid: c8a94974d169e0e4aab0a07c5a73ff96, type: 3}
 --- !u!1 &1830508389
 GameObject:
   m_ObjectHideFlags: 0
@@ -9850,7 +9724,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1901530949
 MonoBehaviour:
@@ -11048,7 +10922,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2091905935
 GameObject:
@@ -11199,7 +11073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCorrect: 0
-  GM: {fileID: 1824136866}
+  GM: {fileID: 0}
 --- !u!114 &2091905941
 MonoBehaviour:
   m_ObjectHideFlags: 0
