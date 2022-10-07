@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI QuestionTxt;
 
+    public GameObject go_HowtoPlay;
     public GameObject go_versus;
     public GameObject go_gilMahasiswa;
     public GameObject go_gilDosen;
@@ -89,16 +91,28 @@ public class GameManager : MonoBehaviour
         go_win.SetActive(false);
         go_lose.SetActive(false);
 
-
+        //1-5
         QnA.Add(new QuestionAndAnswers()
         {
             Question = "Sifat-sifat yang dimiliki oleh seorang technopreneur, kecuali ? ",
-            Answers = new string[3] { "logic", "smart", "creativity" },
+            Answers = new string[3] { "smart", "logic", "creativity" },
+            CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Skill yang dibutuhkan oleh seorang technopreneur, kecuali ? ",
+            Answers = new string[3] { "teamwork", "leadership", "Self-interested" },
+            CorrectAnswers = 3
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Perusahaan rintisan yang belum lama beroperasi adalah ? ",
+            Answers = new string[3] { "UKM", "Start Up", "UMKM" },
             CorrectAnswers = 2
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Seorang yang berpikir ?Outside the box? adalah ?  ",
+            Question = "Seorang yang berpikir 'Outside the box' adalah ?  ",
             Answers = new string[3] { "Entrepreneur", "Sociopreneur", "Technopreneur" },
             CorrectAnswers = 3
         });
@@ -110,15 +124,93 @@ public class GameManager : MonoBehaviour
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Langkah ?Select the target market? termasuk dalam ?",
+            Question = "Target pasar utama atau tujuan utama dari konsumen yang yang dituju merupakan arti dari ?",
+            Answers = new string[3] { "Mass Market", "Target Market", "Niche Market" },
+            CorrectAnswers = 2
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Industri dengan target pasar dan konsumen yang lebih spesifik merupakan arti dari ? ",
+            Answers = new string[3] { "Mass Market", "Target Market", "Niche Market" },
+            CorrectAnswers = 3
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Target pasar yang lebih luas tapi masih sesuai dengan segmen yang sudah ditetapkan sebelumnya merupakan arti dari ?  ",
+            Answers = new string[3] { "Mass Market", "Target Market", "Niche Market" },
+            CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Yang tidak termasuk dalam segementasi pasar adalah ?  ",
+            Answers = new string[3] { "Segemented Market", "Mass Market", "Target Market" },
+            CorrectAnswers = 3
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Ciri-ciri dari Segmented Marketing, kecuali ?",
+            Answers = new string[3] { "More income", "Adapt offer to best match segment", "Isolate broad segements comprising a market" },
+            CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Ciri-ciri dari Niche Marketing, kecuali ?",
+            Answers = new string[3] { "few or no significant competitors", "low price", "focus on subgroups seeking special combination of benefits" },
+            CorrectAnswers = 2
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Langkah 'Identify bases for segmenting the market' termasuk dalam ?",
+            Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
+            CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Langkah 'Developing profile of resultin segment' termasuk dalam ?",
+            Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
+            CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Langkah 'Develop measures of segment atrractiveness' termasuk dalam ?",
             Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
             CorrectAnswers = 2
         });
         QnA.Add(new QuestionAndAnswers()
         {
-            Question = "Design Thinking merupakan kombinasi dari ?",
-            Answers = new string[3] { "Analytical Thinking & Intuitive Thinking", "Analytical Thinking & Creative Thinking", "Creative Thinking & Intuitive Thinking" },
+            Question = "Langkah 'Select the target segment(s)' termasuk dalam ?",
+            Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
+            CorrectAnswers = 2
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Langkah 'Develop positioning for each target segment' termasuk dalam ?",
+            Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
+            CorrectAnswers = 3
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Langkah 'develop marketing mix for each target segment' termasuk dalam ?",
+            Answers = new string[3] { "Market Segmentation", "Market Targeting", "Market Positioning" },
+            CorrectAnswers = 3
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Total market demand for a product or service adalah arti dari ?",
+            Answers = new string[3] { "TAM (Total Addressable Market)", "SAM (Serviceable Addressable Market)", "SOM (Serviceable Obtainable Market)" },
             CorrectAnswers = 1
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Portion of the market you can acquire based on your business model adalah arti dari ?",
+            Answers = new string[3] { "TAM (Total Addressable Market)", "SAM (Serviceable Addressable Market)", "SOM (Serviceable Obtainable Market)" },
+            CorrectAnswers = 2
+        });
+        QnA.Add(new QuestionAndAnswers()
+        {
+            Question = "Percentage of SAM you can realistically capture adalah arti dari ?",
+            Answers = new string[3] { "TAM (Total Addressable Market)", "SAM (Serviceable Addressable Market)", "SOM (Serviceable Obtainable Market)" },
+            CorrectAnswers = 3
         });
 
         kartuNegatif[0] = "Kamu tidak memperhatikan dosen pada saat kelas";
@@ -175,6 +267,26 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
         }
 
+        go_HowtoPlay.SetActive(true);
+
+        //go_versus.SetActive(true);
+        //this.Wait(2f, () =>
+        //{
+        //    go_versus.SetActive(false);
+        //    go_papan.SetActive(true);
+
+        //});
+
+        //this.Wait(2f, () =>
+        //{
+        //    playgame();
+        //});
+
+    }
+
+    public void startGame()
+    {
+        go_HowtoPlay.SetActive(false);
         go_versus.SetActive(true);
         this.Wait(2f, () =>
         {
@@ -187,7 +299,6 @@ public class GameManager : MonoBehaviour
         {
             playgame();
         });
-
     }
 
     void playgame()

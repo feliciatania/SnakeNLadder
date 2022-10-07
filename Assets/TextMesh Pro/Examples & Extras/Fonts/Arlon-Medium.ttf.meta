@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 333a74cba304146459e54fdc7b2bd31f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Arlon
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bc9e938dd2588f342ad56a865983f512, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
