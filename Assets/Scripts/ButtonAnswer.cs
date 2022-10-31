@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ButtonAnswer : MonoBehaviour
 {
@@ -10,5 +11,6 @@ public class ButtonAnswer : MonoBehaviour
         Debug.Log("answering..");
         //canvasQuiz.GetComponent<CanvasQuiz>().Answer(index);
         GameInstance.onQuizAnswered?.Invoke(index);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -29,7 +29,7 @@ public class KartuPositif : MonoBehaviour
     }
     public void OnKartuPositif(int curPosMhs)
     {
-        Debug.Log("KARTU POSITIF POS MAHASISWA : " + curPosMhs);
+        //Debug.Log("KARTU POSITIF POS MAHASISWA : " + curPosMhs);
         if (curPosMhs == 2)
         {
             x = UnityEngine.Random.Range(0, 2);
@@ -68,7 +68,7 @@ public class KartuPositif : MonoBehaviour
     {
         if(b == true)
         {
-            Debug.Log("POSITIF : " + majuOrMundur);
+            //Debug.Log("POSITIF : " + majuOrMundur);
             GameInstance.onMahasiswaMoveOnKartu?.Invoke(majuOrMundur);
         }
     }

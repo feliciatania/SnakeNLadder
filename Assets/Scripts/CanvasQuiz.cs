@@ -32,22 +32,20 @@ public class CanvasQuiz : MonoBehaviour
     private List<QuestionAndAnswers> tempQnA = new List<QuestionAndAnswers>();
     private bool onlyOnce = true;
 
-    private void Awake()
-    {
-        if (onlyOnce)
-        {
-            for (int i = 0; i < QnA.Count; i++)
-            {
-                tempQnA.Add(QnA[i]);
-            }
-            onlyOnce = false;
-        }
-    }
     void Start()
     {
         Debug.Log("start Quizzz");
         GameInstance.onQuizAnswered += Answer;
         GameInstance.onQuizStart += onQuizStart;
+        GameInstance.onGameStart += onGameStart;
+    }
+
+    public void onGameStart()
+    {
+        for (int i = 0; i < QnA.Count; i++)
+        {
+            tempQnA.Add(QnA[i]);
+        }
     }
 
     public void onQuizStart()
@@ -95,6 +93,7 @@ public class CanvasQuiz : MonoBehaviour
         {
             timeout = true;
             GameInstance.onTimeout?.Invoke();
+            startTimer = false;
         }
         TMP_Timer.text = Convert.ToInt32(currentDuration).ToString();
     }

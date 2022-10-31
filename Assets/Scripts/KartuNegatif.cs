@@ -83,7 +83,7 @@ public class KartuNegatif : MonoBehaviour
     {
         if (b == false)
         {
-            Debug.Log("NEGATIF : " + majuOrMundur);
+            //Debug.Log("NEGATIF : " + majuOrMundur);
             GameInstance.onMahasiswaMoveOnKartu?.Invoke(majuOrMundur);
         }
     }

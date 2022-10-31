@@ -49,5 +49,6 @@ public class LemparDadu : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         angkaDadu = randomDiceSide + 1;
+        //angkaDadu = 4;
     }
 }
